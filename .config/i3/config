@@ -1,0 +1,318 @@
+#########-I3 CONFIGURATION by jwillmore-##########
+
+set $mod Mod4
+set $term termite
+
+####-MOVEMENT KEYS-####
+
+set $up l
+set $down k
+set $left j
+set $right semicolon
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1; workspace 1
+bindsym $mod+Shift+2 move container to workspace 2; workspace 2
+bindsym $mod+Shift+3 move container to workspace 3; workspace 3
+bindsym $mod+Shift+4 move container to workspace 4; workspace 4
+bindsym $mod+Shift+5 move container to workspace 5; workspace 5
+bindsym $mod+Shift+6 move container to workspace 6; workspace 6
+bindsym $mod+Shift+7 move container to workspace 7; workspace 7
+bindsym $mod+Shift+8 move container to workspace 8; workspace 8
+bindsym $mod+Shift+9 move container to workspace 9; workspace 9
+bindsym $mod+Shift+0 move container to workspace 10; workspace 10
+
+####-LAUNCHER MENU-####
+
+# start rofi 
+#bindsym $mod+d exec --no-startup-id rofi -show drun -fullscreen -font "Noto Sans 13"
+
+#start dmenu
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '#282828' -sf '#eeeeee' -sb '#689d6a' -nf '#bbbbbb' -h 25 -fn "Noto Sans"
+####-CONFIGURATION RELOAD-####
+
+# restart i3 
+bindsym $mod+Shift+r restart
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+####-KILL WINDOWS-####
+
+bindsym $mod+Shift+q kill
+bindsym $mod+q kill
+
+####-MOVEMENT-####
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# toggle tiling / floating
+bindsym $mod+Shift+t floating toggle
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+
+####-WORKSPACES-####
+
+# next/previous workspace
+
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
+bindsym $mod+Tab workspace back_and_forth
+
+#navigate workspaces next / previous
+bindsym Mod1+Ctrl+Right workspace next
+bindsym Mod1+Ctrl+Left workspace prev
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+####-TILING-####
+
+# orientation for new workspaces
+default_orientation horizontal
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+####-RESIZING-####
+
+# Resizing by 1
+bindsym $mod+Mod1+Ctrl+Right resize shrink width 1 px or 1 ppt
+bindsym $mod+Mod1+Ctrl+Up resize grow height 1 px or 1 ppt
+bindsym $mod+Mod1+Ctrl+Down resize shrink height 1 px or 1 ppt
+bindsym $mod+Mod1+Ctrl+Left resize grow width 1 px or 1 ppt
+
+
+####-FONT-####
+font pango: Noto Sans 13
+
+
+####-USER APPLICATIONS TO START AT BOOT-####
+
+# set wallpaper
+exec_always feh --bg-scale ~/.wall.png 
+
+####-SYSTEM APPLICATIONS-####
+
+exec --no-startup-id /usr/bin/dunst
+
+
+####-SHORTCUTS FOR APPLICATIONS-####
+
+# terminal
+bindsym $mod+Return exec --no-startup-id $term;focus
+
+#pulsemixer
+bindsym $mod+F2 exec --no-startup-id $term --exec pulsemixer
+
+#file manager
+bindsym $mod+g exec --no-startup-id $term --exec ranger
+
+#web browser
+bindsym $mod+w exec --no-startup-id qutebrowser
+
+#mail
+bindsym $mod+n exec --no-startup-id $term --exec neomutt
+
+#music player
+bindsym $mod+m exec --no-startup-id $term --exec cmus
+
+#bashtop
+bindsym $mod+Shift+b exec --no-startup-id $term --exec bashtop
+
+#screenshots
+bindsym Print exec --no-startup-id maim ~/Pictures/$(date +%s).png && notify-send "Screenshot saved to ~/Pictures/"
+
+####-TILING OR FLOATING CONFIGURATION-####
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="^Preferences$"] floating enable
+for_window [window_role="setup"] floating enable
+
+
+####-AUDIO CONTROL-####
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pulsemixer --change-volume +5"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pulsemixer --change-volume -5"
+bindsym XF86AudioMute exec --no-startup-id "pulsemixer --toggle-mute"
+bindsym XF86AudioMicMute exec --no-startup-id "pulsemixer --toggle-mute --id source-1"
+
+####-BRIGHTNESSCTL-####
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10% # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%- # decrease screen brightness
+
+
+####-POPUPS-####
+
+#Popups during fullscreen mode
+popup_during_fullscreen smart
+
+####-I3 GAPS NEXT-####
+
+# Settings for I3 next gap git
+
+for_window [class="^.*"] border pixel 2
+gaps inner 5
+gaps outer 5
+#smart_gaps on
+#smart_borders on
+
+
+####-I3 GAPS CHANGE-####
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+####-COMPOSITOR-####
+
+exec_always --no-startup-id xcompmgr 
+
+####-I3 BAR CONFIG-####
+
+bar {
+
+    height 25
+    workspace_buttons yes
+    font pango:Noto Sans 14
+
+    position top
+    #position bottom
+
+    #system icons
+    #tray_output none
+    #tray_output $firstMonitor
+    #tray_output $secondMonitor
+
+
+
+    # i3status
+
+    #status_command i3status
+    status_command i3status -c ~/.config/i3/i3status.conf
+
+    # i3 bar colors
+    # variable border background Text
+
+    colors {
+        background #282828
+        statusline #d5c4a1
+        separator  #d5c4a1
+
+        # colorclass           border  backgr. text
+        focused_workspace     #a9a9a9 #5f676a #ebdbb2
+        active_workspace      #a9a9a9 #5f676a #eeeeee
+        inactive_workspace    #a9a9a9 #222222 #a9a9a9
+        urgent_workspace      #a9a9a9 #d42121 #FFFFFF
+        }
+
+    }
+    ##STOP THEMING BAR
+
+    ##START THEMING WM
+
+    # Window color settings
+
+	# Gruvbox colors
+	client.focused		#689d6a #689d6a #191919 #689d6a #689d6a
+	client.unfocused	#282828 #282828 #282828 #282828 #282828
+	client.focused_inactive #2c3c3d #458588 #191919 #2c3c3d #2c3c3d
+	client.placeholder	#191919 #282828 #458588 #191919 #282828
+	client.urgent		#cc241d #cc241d #191919 #cc241d #cc241d
+
+	client.background	#282828
+
+    ##STOP THEMING WM
+
+
+
+####-KEYBOARD LAYOUT-####
+
+#exec --no-startup-id setxkbmap layout 
+
+###############-THE END-###############

@@ -143,10 +143,11 @@ font pango: Noto Sans 13
 # set wallpaper
 exec_always feh --bg-scale ~/.wall.png 
 
-####-SYSTEM APPLICATIONS-####
-
+# notifications
 exec --no-startup-id /usr/bin/dunst
 
+# authentication agent
+#exec --no-startup-id /usr/bin/polkit-dumb-agent
 
 ####-SHORTCUTS FOR APPLICATIONS-####
 

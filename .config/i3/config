@@ -40,7 +40,8 @@ bindsym $mod+Shift+0 move container to workspace 10; workspace 10
 #bindsym $mod+d exec --no-startup-id rofi -show drun -fullscreen -font "Noto Sans 13"
 
 #start dmenu
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '#282828' -sf '#eeeeee' -sb '#689d6a' -nf '#bbbbbb' -h 25 -fn "Noto Sans"
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '#282828' -sf '#d5c4a1' -sb '#689d6a' -nf '#d5c4a1' -h 25 -fn "Noto Sans"
+
 ####-CONFIGURATION RELOAD-####
 
 # restart i3 

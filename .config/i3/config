@@ -148,7 +148,7 @@ exec_always feh --bg-scale ~/.wall.png
 exec --no-startup-id /usr/bin/dunst
 
 # authentication agent
-#exec --no-startup-id lxpolkit &
+#exec --no-startup-id lxpolkit
 
 ####-SHORTCUTS FOR APPLICATIONS-####
 

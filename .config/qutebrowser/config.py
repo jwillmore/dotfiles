@@ -1,4 +1,4 @@
-#config.load_autoconfig()
+config.load_autoconfig(False)
 config.source('gruvbox.py')
 
 config.bind(';D', 'hint images download')

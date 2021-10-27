@@ -4,6 +4,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+source ~/.config/user-dirs.dirs
+
 export HISTCONTROL=ignoreboth:erasedups
 
 set -o vi

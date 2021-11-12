@@ -29,11 +29,8 @@ fi
 bind "set completion-ignore-case on"
 
 #list
-alias ls='ls --color=auto'
-alias la='ls -a'
-alias ll='ls -la'
-alias l='ls'
-alias l.="ls -A | egrep '^\.'"
+alias ls='exa -a --color=always =--group-directories-first'
+alias la='exa -al --color=always --group-directories-first'
 
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'

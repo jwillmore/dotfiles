@@ -122,6 +122,8 @@ export PF_COL3=6
 
 pfetch
 
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
 source ~/.zsh-syntax/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=#689D6A,bold

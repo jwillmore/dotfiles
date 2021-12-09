@@ -1,7 +1,7 @@
 #########-I3 CONFIGURATION by jwillmore-##########
 
 set $mod Mod4
-set $term termite
+set $term alacritty
 
 ####-MOVEMENT KEYS-####
 
@@ -156,28 +156,31 @@ exec --no-startup-id /usr/bin/dunst
 bindsym $mod+Return exec --no-startup-id $term;focus
 
 #pulsemixer
-bindsym $mod+F2 exec --no-startup-id $term --exec pulsemixer
+bindsym $mod+F2 exec --no-startup-id $term -e pulsemixer
 
 #file manager
-bindsym $mod+g exec --no-startup-id $term --exec ranger
+bindsym $mod+g exec --no-startup-id $term -e ranger
 
 #web browser
 bindsym $mod+w exec --no-startup-id qutebrowser
 
 #mail
-bindsym $mod+n exec --no-startup-id $term --exec neomutt
+bindsym $mod+n exec --no-startup-id $term -e neomutt
 
 #music player
-bindsym $mod+m exec --no-startup-id $term --exec cmus
+bindsym $mod+m exec --no-startup-id $term -e cmus
 
 #bashtop
-bindsym $mod+Shift+b exec --no-startup-id $term --exec bashtop
+bindsym $mod+Shift+b exec --no-startup-id $term -e bashtop
 
 #screenshots
 bindsym Print exec --no-startup-id maim ~/Pictures/$(date +%s).png && notify-send ' Screenshot saved to Pictures'
 
 #pipe-viewer
-bindsym $mod+p exec --no-startup-id $term --exec "pipe-viewer -ls"
+bindsym $mod+p exec --no-startup-id $term -e "pipe-viewer -ls"
+
+#pass-menu
+bindsym $mod+Shift+p exec --no-startup-id passmenu -nb '#282828' -sf '#d5c4a1' -sb '#689d6a' -nf '#d5c4a1' -h 25 -fn "Noto Sans"
 
 ####-TILING OR FLOATING CONFIGURATION-####
 

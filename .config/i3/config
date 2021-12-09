@@ -271,6 +271,7 @@ bar {
     font pango:Noto Sans 14
 
     position top
+    separator_symbol	" | "
     #position bottom
 
     #system icons

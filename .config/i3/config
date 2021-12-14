@@ -177,7 +177,7 @@ bindsym $mod+Shift+b exec --no-startup-id $term -e bashtop
 bindsym Print exec --no-startup-id maim ~/Pictures/$(date +%s).png && notify-send ' Screenshot saved to Pictures'
 
 #pipe-viewer
-bindsym $mod+p exec --no-startup-id $term -e "pipe-viewer -ls"
+bindsym $mod+p exec --no-startup-id $term -e pipe-viewer -ls
 
 #pass-menu
 bindsym $mod+Shift+p exec --no-startup-id passmenu -nb '#282828' -sf '#d5c4a1' -sb '#689d6a' -nf '#d5c4a1' -h 25 -fn "Noto Sans"

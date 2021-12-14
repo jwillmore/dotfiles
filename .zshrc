@@ -124,7 +124,9 @@ pfetch
 
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-source ~/.zsh-syntax/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-syntax/zsh-syntax-highlighting.zsh
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=#689D6A,bold
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=#689D6A,bold

@@ -37,7 +37,7 @@ if [ -d "$HOME/.local/bin" ] ;
 fi
 
 #list
-alias ls='exa -a --color=always =--group-directories-first'
+alias ls='exa -a --color=always --group-directories-first'
 alias la='exa -al --color=always --group-directories-first'
 
 ## Colorize the grep command output for ease of use (good for log files)##

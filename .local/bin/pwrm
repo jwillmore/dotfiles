@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# a simple dmenu session script 
+#
+###
+
+DMENU="dmenu -fn NotoSans -nb #282828 -sf #d5c4a1 -sb #689d6a -nf #d5c4a1 -h 25 -p Power_Menu"
+choice=$(echo -e "logout\nshutdown\nreboot\nsuspend" | $DMENU)
+
+case "$choice" in
+  logout) i3-msg exit & ;;
+  shutdown) poweroff & ;;
+  reboot) reboot ;;
+  suspend) systemctl suspend & ;;
+esac

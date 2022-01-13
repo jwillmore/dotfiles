@@ -8,7 +8,7 @@ set $term alacritty
 set $up l
 set $down k
 set $left j
-set $right semicolon
+set $right h
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -107,17 +107,17 @@ for_window [urgent=latest] focus
 default_orientation horizontal
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+ctrl+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+ctrl+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+z layout tabbed
+bindsym $mod+Shift+z layout tabbed
 bindsym $mod+e layout toggle split
 
 # change focus between tiling / floating windows
@@ -150,6 +150,11 @@ exec --no-startup-id /usr/bin/dunst
 # authentication agent
 #exec --no-startup-id lxpolkit
 
+####-LOCKSCREEN & POWEROFF-####
+
+bindsym $mod+shift+x exec betterlockscreen -l blur -u ~/.wall.png --span
+bindsym $mod+shift+p exec --no-startup-id .local/bin/pwrm
+
 ####-SHORTCUTS FOR APPLICATIONS-####
 
 # terminal
@@ -165,7 +170,7 @@ bindsym $mod+g exec --no-startup-id $term -e ranger
 bindsym $mod+w exec --no-startup-id qutebrowser
 
 #mail
-bindsym $mod+n exec --no-startup-id $term -e neomutt
+bindsym $mod+c exec --no-startup-id $term -e alpine -i
 
 #music player
 bindsym $mod+m exec --no-startup-id $term -e cmus
@@ -173,14 +178,31 @@ bindsym $mod+m exec --no-startup-id $term -e cmus
 #bashtop
 bindsym $mod+Shift+b exec --no-startup-id $term -e bashtop
 
+#zathura
+bindsym $mod+z exec --no-startup-id zathura
+
 #screenshots
 bindsym Print exec --no-startup-id maim ~/Pictures/$(date +%s).png && notify-send ' Screenshot saved to Pictures'
 
+bindsym Shift+Print exec --no-startup-id maim --select ~/Pictures/$(date +%s).png && notify-send ' Screenshot saved to Pictures'
+
+#Network Menu
+bindsym $mod+Shift+w exec --no-startup-id $term -t=nmtui -e nmtui
+
+#calculator
+bindsym $mod+F4 exec --no-startup-id $term -t=bc -e bc
+
 #pipe-viewer
-bindsym $mod+p exec --no-startup-id $term -e pipe-viewer -ls
+bindsym $mod+F1 exec --no-startup-id $term -e pipe-viewer
 
 #pass-menu
-bindsym $mod+Shift+p exec --no-startup-id passmenu -nb '#282828' -sf '#d5c4a1' -sb '#689d6a' -nf '#d5c4a1' -h 25 -fn "Noto Sans"
+bindsym $mod+p exec --no-startup-id passmenu -nb '#282828' -sf '#d5c4a1' -sb '#689d6a' -nf '#d5c4a1' -h 25 -fn "Noto Sans"
+
+#RSS feed reader
+bindsym $mod+n exec --no-startup-id $term -e newsboat
+
+#Drive mounter
+bindsym $mod+F3 exec --no-startup-id $term -t=dmnt -e ~/.local/bin/dmnt
 
 ####-TILING OR FLOATING CONFIGURATION-####
 
@@ -188,7 +210,9 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="^Preferences$"] floating enable
 for_window [window_role="setup"] floating enable
 for_window [title="pulsemixer"]  floating enable
-
+for_window [title="dmnt"]  floating enable
+for_window [title="nmtui"]  floating enable
+for_window [title="bc"]  floating enable
 
 ####-AUDIO CONTROL-####
 
@@ -260,7 +284,7 @@ mode "$mode_gaps_outer" {
 
 ####-COMPOSITOR-####
 
-exec_always --no-startup-id xcompmgr 
+exec_always --no-startup-id xcompmgr -c -f 
 
 ####-I3 BAR CONFIG-####
 

@@ -5,22 +5,26 @@ List of programs that I use:
 - i3-gaps
 - i3blocks
 - i3status
+- betterlockscreen
+- alacritty
+- neovim
+- newsboat
+- feh
 - cmus
 - dunst
-- neovim
 - dmenu
 - bashtop
 - ranger
 - qutebrowser
-- termite/alacritty
+- pipewire
 - zathura
 - Starship shell prompt
 - Zsh with zsh-vi-mode, zsh-syntax-highlighting, zsh-autosuggestions,etc.
 - pulsemixer
 - mpv
-- neoumutt
+- alpine
 - pipe-viewer
-- pass
+- pass & passmenu
 -----------------------
 ![1634907024](https://user-images.githubusercontent.com/92748037/138460756-98544c38-2a09-4169-95bd-20acc0591e68.png)
 ![1634907012](https://user-images.githubusercontent.com/92748037/138460753-191a0cb7-d193-4062-87d6-1bb2bdd9a428.png)

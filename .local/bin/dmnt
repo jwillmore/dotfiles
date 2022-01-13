@@ -1,0 +1,47 @@
+#!/bin/sh
+
+##################-dmount-##################
+###############-by Jwillmore-###############
+########-Released under MIT License-########
+
+
+drives="$(lsblk -rpo "name,type,size,mountpoint" | grep 'part\|rom' | awk '$4==""{printf " %s (%s) \n",$1,$3}')"
+udrives=$(lsblk -nrpo "name,type,size,mountpoint,label" | awk -F':' '{gsub(/ /,":")}$4!~/\/boot|\/efi|\/home$|SWAP/&&length($4)>1{printf "%s (%s) \n",$4,$3,$5}')
+mnt=/run/media
+
+mountd(){
+  option=$(echo "$drives" | sort -V )
+  drive=$(dialog --title "Choose a drive to mount." --menu "" 20 40 20 $option 3>&1 1>&2 2>&3) || exit
+fs_uuid=$(lsblk -no UUID "$drive")
+
+  sudo mkdir $mnt/"$fs_uuid"
+  sudo mount "$drive" $mnt/"$fs_uuid"
+
+  if mount | grep "$drive" > /dev/null; then
+    notify-send "  $drive mounted on $mnt/$fs_uuid"
+  fi
+}
+
+umountd(){
+  if [[ -z "$udrives" ]]; then
+  dialog --colors --title "Empty" --msgbox "\Zb There are no drives that can be unmounted." 0 0
+  fi
+
+  option=$(echo "$udrives" | sort -V )
+  drive=$(dialog --title "Choose a drive to unmount." --menu "" 20 40 20 $option 3>&1 1>&2 2>&3) || exit
+  sudo umount "$drive"
+  sudo rmdir "$drive"
+
+if [ ! -d "$drive" ]; then
+  notify-send "  $drive unmounted"
+else
+  notify-send "  $drive could not be unmounted."
+fi
+}
+
+  action=$(dialog --title "dmount | by Jwillmore" --menu "" 8 40 20 "Mount" "" "Unmount" "" 3>&1 1>&2 2>&3)
+  if [ "$action" = "Mount" ]; then
+    mountd
+  elif [ "$action" = "Unmount" ]; then 
+    umountd
+  fi

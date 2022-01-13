@@ -1,0 +1,18 @@
+# colors
+color background          black      default
+color listnormal          color8     default
+color listnormal_unread   green      default bold
+color listfocus           white     color235 bold
+color listfocus_unread    yellow    color235 bold
+color info                cyan      default bold standout
+color article             white      default
+
+# highlights
+highlight article "^(Feed|Link):.*$" yellow default bold
+highlight article "^(Title|Date|Author):.*$" yellow default bold
+highlight article "https?://[^ ]+" blue default underline
+highlight article "\\[[0-9]+\\]" yellow default bold
+highlight article "\\[image\\ [0-9]+\\]" yellow default bold
+highlight feedlist "^─.*$" yellow color235 bold
+
+browser qutebrowser

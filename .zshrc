@@ -8,7 +8,8 @@ export HISTCONTROL=ignoreboth:erasedups
 export EDITOR='nvim'
 export VISUAL='nvim'
 export READER='zathura'
-export TERMINAL='termite'
+export TERMINAL='alacritty'
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 # History in cache directory:
 HISTSIZE=10000000

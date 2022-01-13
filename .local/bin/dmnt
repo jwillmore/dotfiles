@@ -28,7 +28,7 @@ umountd(){
   fi
 
   option=$(echo "$udrives" | sort -V )
-  drive=$(dialog --title "Choose a drive to unmount." --menu "" 20 40 20 $option 3>&1 1>&2 2>&3) || exit
+  drive=$(dialog --title "Choose a drive to unmount." --menu "" 20 50 20 $option 3>&1 1>&2 2>&3) || exit
   sudo umount "$drive"
   sudo rmdir "$drive"
 

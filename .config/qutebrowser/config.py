@@ -8,6 +8,6 @@ c.url.start_pages = ["~/.config/qutebrowser/page.html"]
 c.url.default_page = "~/.config/qutebrowser/page.html"
 
 #config.set("colors.webpage.darkmode.enabled", True)
-config.set("colors.webpage.preferred_color_scheme" "dark")
+config.set("colors.webpage.preferred_color_scheme", "dark")
 config.set("fonts.default_family", "Source Code Pro")
 config.set("content.blocking.method", "both")

@@ -241,6 +241,10 @@ bindsym Shift+F7 exec --no-startup-id "cmus-remote	-n"
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10% # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%- # decrease screen brightness
 
+bindsym Shift+F10 exec --no-startup-id brightnessctl set +10% # increase screen brightness
+bindsym Shift+F9 exec --no-startup-id brightnessctl set 10%- # decrease screen brightness
+
+
 ####-POPUPS-####
 
 #Popups during fullscreen mode

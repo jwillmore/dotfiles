@@ -221,11 +221,25 @@ bindsym XF86AudioLowerVolume exec --no-startup-id "pulsemixer --change-volume -5
 bindsym XF86AudioMute exec --no-startup-id "pulsemixer --toggle-mute"
 bindsym XF86AudioMicMute exec --no-startup-id "pulsemixer --toggle-mute --id source-1"
 
+bindsym Shift+F2 exec --no-startup-id "pulsemixer --change-volume +5"
+bindsym Shift+F1 exec --no-startup-id "pulsemixer --change-volume -5"
+bindsym Shift+F3 exec --no-startup-id "pulsemixer --toggle-mute"
+bindsym Shift+F4 exec --no-startup-id "pulsemixer --toggle-mute --id source-1"
+
+
+####-CMUS REMOTE-####
+bindsym XF86AudioPlay exec --no-startup-id "cmus-remote	-u"
+bindsym XF86AudioPrev exec --no-startup-id "cmus-remote	-r"
+bindsym XF86AudioNext exec --no-startup-id "cmus-remote	-n"
+
+bindsym Shift+F6 exec --no-startup-id "cmus-remote	-u"
+bindsym Shift+F5 exec --no-startup-id "cmus-remote	-r"
+bindsym Shift+F7 exec --no-startup-id "cmus-remote	-n"
+
 ####-BRIGHTNESSCTL-####
 
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10% # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%- # decrease screen brightness
-
 
 ####-POPUPS-####
 

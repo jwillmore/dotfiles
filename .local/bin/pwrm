@@ -1,8 +1,6 @@
 #!/bin/bash
 #
-# a simple dmenu session script 
-#
-###
+# PowerMenu Script
 
 DMENU="dmenu -fn NotoSans -nb #282828 -sf #d5c4a1 -sb #689d6a -nf #d5c4a1 -h 25 -p PowerMenu"
 choice=$(echo -e "logout\nshutdown\nreboot\nsuspend" | $DMENU)

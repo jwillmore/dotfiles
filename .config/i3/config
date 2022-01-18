@@ -153,27 +153,33 @@ exec --no-startup-id /usr/bin/dunst
 ####-LOCKSCREEN & POWEROFF-####
 
 bindsym $mod+shift+x exec betterlockscreen -l blur -u ~/.wall.png --span
+
 bindsym $mod+shift+p exec --no-startup-id .local/bin/pwrm
+bindsym XF86PowerOff exec --no-startup-id .local/bin/pwrm
 
 ####-SHORTCUTS FOR APPLICATIONS-####
 
 # terminal
 bindsym $mod+Return exec --no-startup-id $term;focus
+bindsym XF86Terminal exec --no-startup-id $term;focus
 
 #pulsemixer
 bindsym $mod+F2 exec --no-startup-id $term -e pulsemixer
 
 #file manager
 bindsym $mod+g exec --no-startup-id $term -e ranger
+bindsym XF86Explorer exec --no-startup-id $term -e ranger
 
 #web browser
 bindsym $mod+w exec --no-startup-id qutebrowser
 
 #mail
 bindsym $mod+c exec --no-startup-id $term -e alpine -i
+bindsym XF86Mail exec --no-startup-id $term -e alpine -i
 
 #music player
 bindsym $mod+m exec --no-startup-id $term -e cmus
+bindsym XF86Music exec --no-startup-id $term -e cmus
 
 #bashtop
 bindsym $mod+Shift+b exec --no-startup-id $term -e bashtop
@@ -191,6 +197,7 @@ bindsym $mod+Shift+w exec --no-startup-id $term -t=nmtui -e nmtui
 
 #calculator
 bindsym $mod+F4 exec --no-startup-id $term -t=bc -e bc
+bindsym XF86Calculator exec --no-startup-id $term -t=bc -e bc
 
 #pipe-viewer
 bindsym $mod+F1 exec --no-startup-id $term -e pipe-viewer
@@ -200,6 +207,7 @@ bindsym $mod+p exec --no-startup-id passmenu -nb '#282828' -sf '#d5c4a1' -sb '#6
 
 #RSS feed reader
 bindsym $mod+n exec --no-startup-id $term -e newsboat
+bindsym XF86News exec --no-startup-id $term -e newsboat
 
 #Drive mounter
 bindsym $mod+F3 exec --no-startup-id $term -t=dmnt -e ~/.local/bin/dmnt

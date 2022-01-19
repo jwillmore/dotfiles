@@ -5,10 +5,10 @@ set $term alacritty
 
 ####-MOVEMENT KEYS-####
 
-set $up l
-set $down k
-set $left j
-set $right h
+set $up k
+set $down j
+set $left h
+set $right l
 
 # switch to workspace
 bindsym $mod+1 workspace 1

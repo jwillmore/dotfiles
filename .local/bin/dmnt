@@ -9,12 +9,6 @@ drives="$(lsblk -rpo "name,type,size,mountpoint" | grep 'part\|rom' | awk '$4=="
 udrives=$(lsblk -nrpo "name,type,size,mountpoint,label" | awk -F':' '{gsub(/ /,":")}$4!~/\/boot|\/efi|\/home$|SWAP/&&length($4)>1{printf "%s (%s) \n",$4,$3,$5}')
 mnt=/run/media
 
-media(){
-  if [[ ! -d "$mnt" ]]; then
-    sudo mkdir "$mnt"
-  fi
-}
-
 mountd(){
   option=$(echo "$drives" | sort -V )
   drive=$(dialog --title "Choose a drive to mount." --menu "" 20 40 20 $option 3>&1 1>&2 2>&3) || exit
@@ -46,7 +40,6 @@ fi
 }
 
   action=$(dialog --title "dmount | by Jwillmore" --menu "" 8 40 20 "Mount" "" "Unmount" "" 3>&1 1>&2 2>&3)
-  media
   if [ "$action" = "Mount" ]; then
     mountd
   elif [ "$action" = "Unmount" ]; then 

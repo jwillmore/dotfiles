@@ -19,6 +19,8 @@ fs_uuid=$(lsblk -no UUID "$drive")
 
   if mount | grep "$drive" > /dev/null; then
     notify-send "  $drive mounted on $mnt/$fs_uuid"
+  else
+    notify-send "  $drive failed to be mounted."
   fi
 }
 

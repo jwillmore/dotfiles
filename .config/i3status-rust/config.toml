@@ -50,11 +50,13 @@ idle_fg = "#dfbf8e"
 
 [[block]]
 block = "custom"
-command = "echo ' Arch Linux'"
-interval = "once"
+command = "sh ~/.config/i3status-rust/wifi.sh"
+interval = 10
+hide_when_empty = true	
 [block.theme_overrides]
 idle_bg = "#282828"
 idle_fg = "#dfbf8e"
+
 
 [[block]]
 block = "custom"

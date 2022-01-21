@@ -40,7 +40,7 @@ bindsym $mod+Shift+0 move container to workspace 10; workspace 10
 #bindsym $mod+d exec --no-startup-id rofi -show drun -fullscreen -font "Noto Sans 13"
 
 #start dmenu
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '#282828' -sf '#d5c4a1' -sb '#689d6a' -nf '#d5c4a1' -h 25 -fn "Noto Sans"
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '#282828' -sf '#d5c4a1' -sb '#689d6a' -nf '#d5c4a1' -h 28 -fn "Noto Sans"
 
 ####-CONFIGURATION RELOAD-####
 
@@ -150,6 +150,9 @@ exec --no-startup-id /usr/bin/dunst
 # authentication agent
 #exec --no-startup-id lxpolkit
 
+# music player daemon (mpd)
+exec --no-startup-id mpd
+
 ####-LOCKSCREEN & POWEROFF-####
 
 bindsym $mod+shift+x exec betterlockscreen -l blur -u ~/.wall.png --span
@@ -178,8 +181,8 @@ bindsym $mod+c exec --no-startup-id $term -e alpine -i
 bindsym XF86Mail exec --no-startup-id $term -e alpine -i
 
 #music player
-bindsym $mod+m exec --no-startup-id $term -e cmus
-bindsym XF86Music exec --no-startup-id $term -e cmus
+bindsym $mod+m exec --no-startup-id $term -e ncmpcpp
+bindsym XF86Music exec --no-startup-id $term -e ncmpp
 
 #bashtop
 bindsym $mod+Shift+b exec --no-startup-id $term -e bashtop
@@ -203,7 +206,7 @@ bindsym XF86Calculator exec --no-startup-id $term -t=bc -e bc
 bindsym $mod+F1 exec --no-startup-id $term -e pipe-viewer
 
 #pass-menu
-bindsym $mod+p exec --no-startup-id passmenu -nb '#282828' -sf '#d5c4a1' -sb '#689d6a' -nf '#d5c4a1' -h 25 -fn "Noto Sans"
+bindsym $mod+p exec --no-startup-id passmenu -nb '#282828' -sf '#d5c4a1' -sb '#689d6a' -nf '#d5c4a1' -h 28 -fn "Noto Sans"
 
 #RSS feed reader
 bindsym $mod+n exec --no-startup-id $term -e newsboat
@@ -222,36 +225,35 @@ for_window [title="dmnt"]  floating enable
 for_window [title="nmtui"]  floating enable
 for_window [title="bc"]  floating enable
 
+
 ####-AUDIO CONTROL-####
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pulsemixer --change-volume +5"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pulsemixer --change-volume -5"
-bindsym XF86AudioMute exec --no-startup-id "pulsemixer --toggle-mute"
-bindsym XF86AudioMicMute exec --no-startup-id "pulsemixer --toggle-mute --id source-1"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pulsemixer --change-volume +5 && sh ~/.config/i3status-rust/volume.sh"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pulsemixer --change-volume -5 && sh ~/.config/i3status-rust/volume.sh"
+bindsym XF86AudioMute exec --no-startup-id "pulsemixer --toggle-mute && sh ~/.config/i3status-rust/volume.sh"
 
-bindsym Shift+F2 exec --no-startup-id "pulsemixer --change-volume +5"
-bindsym Shift+F1 exec --no-startup-id "pulsemixer --change-volume -5"
-bindsym Shift+F3 exec --no-startup-id "pulsemixer --toggle-mute"
-bindsym Shift+F4 exec --no-startup-id "pulsemixer --toggle-mute --id source-1"
+bindsym Shift+F2 exec --no-startup-id "pulsemixer --change-volume +5 && sh ~/.config/i3status-rust/volume.sh"
+bindsym Shift+F1 exec --no-startup-id "pulsemixer --change-volume -5 && sh ~/.config/i3status-rust/volume.sh"
+bindsym Shift+F3 exec --no-startup-id "pulsemixer --toggle-mute && sh ~/.config/i3status-rust/volume.sh"
 
 
-####-CMUS REMOTE-####
-bindsym XF86AudioPlay exec --no-startup-id "cmus-remote	-u"
-bindsym XF86AudioPrev exec --no-startup-id "cmus-remote	-r"
-bindsym XF86AudioNext exec --no-startup-id "cmus-remote	-n"
+####-NCMPCPP CONTROL-####
+bindsym XF86AudioPlay exec --no-startup-id "mpc toggle"
+bindsym XF86AudioPrev exec --no-startup-id "mpc prev"
+bindsym XF86AudioNext exec --no-startup-id "mpc next"
 
-bindsym Shift+F6 exec --no-startup-id "cmus-remote	-u"
-bindsym Shift+F5 exec --no-startup-id "cmus-remote	-r"
-bindsym Shift+F7 exec --no-startup-id "cmus-remote	-n"
+bindsym Shift+F6 exec --no-startup-id "mpc toggle"
+bindsym Shift+F5 exec --no-startup-id "mpc prev"
+bindsym Shift+F7 exec --no-startup-id "mpc next"
+
 
 ####-BRIGHTNESSCTL-####
 
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10% # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%- # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10% && notify-send " Brightness up" # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%- && notify-send " Brightness down" # decrease screen brightness
 
-bindsym Shift+F10 exec --no-startup-id brightnessctl set +10% # increase screen brightness
-bindsym Shift+F9 exec --no-startup-id brightnessctl set 10%- # decrease screen brightness
-
+bindsym Shift+F10 exec --no-startup-id brightnessctl set +10% && notify-send " Brightness up" # increase screen brightness
+bindsym Shift+F9 exec --no-startup-id brightnessctl set 10%- && notify-send " Brightness down" # decrease screen brightness
 
 ####-POPUPS-####
 
@@ -314,45 +316,26 @@ exec_always --no-startup-id xcompmgr -c -f
 
 ####-I3 BAR CONFIG-####
 
+## i3status-rust
 bar {
-
-    height 25
-    workspace_buttons yes
-    font pango:Noto Sans 14
-
+    font pango:Noto Sans 15
+    height 28
     position top
-    separator_symbol	" | "
-    #position bottom
-
-    #system icons
-    #tray_output none
-    #tray_output $firstMonitor
-    #tray_output $secondMonitor
-
-
-
-    # i3status
-
-    #status_command i3status
-    status_command i3status -c ~/.config/i3/i3status.conf
-
-    # i3 bar colors
-    # variable border background Text
-
+    tray_output none
+    status_command i3status-rs ~/.config/i3status-rust/config.toml
+    i3bar_command i3bar
     colors {
+        separator #00000000
         background #282828
-        statusline #d5c4a1
-        separator  #d5c4a1
+        statusline #00000000
+        focused_workspace #689d6a #689d6a #282828
+        active_workspace #282828 #282828 #dfbf8e
+        inactive_workspace #282828 #282828 #dfbf8e
+        urgent_workspace #282828 #ea6962 #dfbf8e
+    }   
 
-        # colorclass           border  backgr. text
-        focused_workspace     #a9a9a9 #5f676a #ebdbb2
-        active_workspace      #a9a9a9 #5f676a #eeeeee
-        inactive_workspace    #a9a9a9 #222222 #a9a9a9
-        urgent_workspace      #a9a9a9 #d42121 #FFFFFF
-        }
-
-    }
-    ##STOP THEMING BAR
+}   
+#STOP THEMING BAR
 
     ##START THEMING WM
 
@@ -368,7 +351,6 @@ bar {
 	client.background	#282828
 
     ##STOP THEMING WM
-
 
 
 ####-KEYBOARD LAYOUT-####

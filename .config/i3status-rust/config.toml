@@ -1,0 +1,73 @@
+theme = "gruvbox-dark"
+icons = "awesome5"
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage}"
+allow_missing = true
+hide_missing = true
+[block.theme_overrides]
+info_bg = "#282828"
+info_fg = "#dfbf8e"
+good_bg = "#282828"
+good_fg = "#dfbf8e"
+idle_bg = "#282828"
+idle_fg = "#dfbf8e"
+warning_fg = "#fb4934"
+warning_bg = "#282828"
+critical_fg = "#282828"
+critical_bg = "#fb4934"
+
+[[block]]
+block = "temperature"
+collapsed = false
+interval = 10
+format = "{average}"
+chip = "*-pci-*"
+[block.theme_overrides]
+info_bg = "#689d6a"
+good_bg = "#689d6a"
+idle_bg = "#689d6a"
+idle_fg = "#282828"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used;M}"
+interval = 4
+[block.theme_overrides]
+idle_bg = "#282828"
+idle_fg = "#dfbf8e"
+
+[[block]]
+block = "cpu"
+interval = 4
+format = "{utilization}"
+[block.theme_overrides]
+idle_bg = "#689d6a"
+idle_fg = "#dfbf8e"
+
+[[block]]
+block = "custom"
+command = "echo ' Arch Linux'"
+interval = "once"
+[block.theme_overrides]
+idle_bg = "#282828"
+idle_fg = "#dfbf8e"
+
+[[block]]
+block = "custom"
+command = "cat ~/.config/i3status-rust/volume_current"
+watch_files = ["~/.config/i3status-rust/volume_current"]
+[block.theme_overrides]
+idle_bg = "#689d6a"
+idle_fg = "#dfbf8e"
+
+[[block]]
+block = "time"
+interval = 2
+format = "%a %d/%m %R"
+[block.theme_overrides]
+idle_bg = "#282828"
+idle_fg = "#dfbf8e"

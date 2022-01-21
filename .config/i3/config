@@ -167,7 +167,7 @@ bindsym $mod+Return exec --no-startup-id $term;focus
 bindsym XF86Terminal exec --no-startup-id $term;focus
 
 #pulsemixer
-bindsym $mod+F2 exec --no-startup-id $term -e pulsemixer
+bindsym $mod+F2 exec --no-startup-id $term -e pulsemixer && sh ~/.config/i3status-rust/wifi.sh
 
 #file manager
 bindsym $mod+g exec --no-startup-id $term -e ranger

@@ -23,13 +23,14 @@ critical_bg = "#fb4934"
 block = "temperature"
 collapsed = false
 interval = 10
+driver = "sysfs"
 format = "{average}"
-chip = "*-pci-*"
+chip = "0"
 [block.theme_overrides]
 info_bg = "#689d6a"
 good_bg = "#689d6a"
 idle_bg = "#689d6a"
-idle_fg = "#282828"
+idle_fg = "#dfbf8e"
 
 [[block]]
 block = "memory"
@@ -47,6 +48,8 @@ format = "{utilization}"
 [block.theme_overrides]
 idle_bg = "#689d6a"
 idle_fg = "#dfbf8e"
+info_bg = "#689d6a"
+info_fg = "#dfbf8e"
 
 [[block]]
 block = "custom"

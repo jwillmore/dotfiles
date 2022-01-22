@@ -153,6 +153,9 @@ exec --no-startup-id /usr/bin/dunst
 # music player daemon (mpd)
 exec --no-startup-id mpd
 
+# volume icon
+exec_always sh ~/.config/i3status-rust/volume.sh 
+
 ####-LOCKSCREEN & POWEROFF-####
 
 bindsym $mod+shift+x exec betterlockscreen -l blur -u ~/.wall.png --span
@@ -167,7 +170,7 @@ bindsym $mod+Return exec --no-startup-id $term;focus
 bindsym XF86Terminal exec --no-startup-id $term;focus
 
 #pulsemixer
-bindsym $mod+F2 exec --no-startup-id $term -e pulsemixer && sh ~/.config/i3status-rust/wifi.sh
+bindsym $mod+F2 exec --no-startup-id $term -e pulsemixer && sh ~/.config/i3status-rust/volume.sh
 
 #file manager
 bindsym $mod+g exec --no-startup-id $term -e ranger

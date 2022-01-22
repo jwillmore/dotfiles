@@ -16,6 +16,10 @@ media(){
 }
 
 mountd(){
+  if [[ -z "$drives" ]]; then
+  dialog --colors --title "Empty" --msgbox "\Zb There are no drives that can be mounted." 0 0
+  fi
+
   option=$(echo "$drives" | sort -V )
   drive=$(dialog --title "Choose a drive to mount." --menu "" 20 40 20 $option 3>&1 1>&2 2>&3) || exit
 fs_uuid=$(lsblk -no UUID "$drive")

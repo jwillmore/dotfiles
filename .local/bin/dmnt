@@ -9,22 +9,12 @@ drives="$(lsblk -rpo "name,type,size,mountpoint" | grep 'part\|rom' | awk '$4=="
 udrives=$(lsblk -nrpo "name,type,size,mountpoint,label" | awk -F':' '{gsub(/ /,":")}$4!~/\/boot|\/efi|\/home$|SWAP/&&length($4)>1{printf "%s (%s) \n",$4,$3,$5}')
 mnt=/run/media
 
-media(){
-  if [ ! -d "$mnt" ]; then
-    sudo mkdir /run/media/
-  fi
-}
-
 mountd(){
-  if [[ -z "$drives" ]]; then
-  dialog --colors --title "Empty" --msgbox "\Zb There are no drives that can be mounted." 0 0
-  fi
-
   option=$(echo "$drives" | sort -V )
   drive=$(dialog --title "Choose a drive to mount." --menu "" 20 40 20 $option 3>&1 1>&2 2>&3) || exit
 fs_uuid=$(lsblk -no UUID "$drive")
 
-  sudo mkdir $mnt/"$fs_uuid"
+  sudo mkdir -p $mnt/"$fs_uuid"
   sudo mount "$drive" $mnt/"$fs_uuid"
 
   if mount | grep "$drive" > /dev/null; then
@@ -53,7 +43,6 @@ fi
 
   action=$(dialog --title "dmount | by Jwillmore" --menu "" 8 40 20 "Mount" "" "Unmount" "" 3>&1 1>&2 2>&3)
   if [ "$action" = "Mount" ]; then
-    media
     mountd
   elif [ "$action" = "Unmount" ]; then 
     umountd

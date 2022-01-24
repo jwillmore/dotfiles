@@ -1,16 +1,18 @@
 # jwillmore's dotfiles
 My personal configurations and dotfiles for Arch Linux and i3-gaps.
 
-List of programs that I use:
+This dotfiles are designed to be installed with [***JDODS***](https://github.com/jwillmore/jdods)
+
+### Components
 - i3-gaps
 - i3blocks
-- i3status
+- i3status-rust
 - betterlockscreen
 - alacritty
 - neovim
 - newsboat
 - feh
-- cmus
+- ncmpcpp
 - dunst
 - dmenu
 - bashtop
@@ -25,7 +27,8 @@ List of programs that I use:
 - alpine
 - pipe-viewer
 - pass & passmenu
------------------------
+
+# Showcase
 ![1643050156](https://user-images.githubusercontent.com/92748037/150847121-4256e56f-1b65-4283-a32b-ff90877c29e6.png)
 ![1643050173](https://user-images.githubusercontent.com/92748037/150847202-3efbcacb-47c4-4343-b1e7-05f88f45a670.png)
 ![1643050226](https://user-images.githubusercontent.com/92748037/150847223-b26f1a51-fbce-4164-824b-838e5b5782cb.png)

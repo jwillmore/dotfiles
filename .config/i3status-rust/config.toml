@@ -36,7 +36,7 @@ idle_fg = "#dfbf8e"
 block = "memory"
 display_type = "memory"
 format_mem = "{mem_used;M}"
-interval = 4
+interval = 8
 [block.theme_overrides]
 idle_bg = "#282828"
 idle_fg = "#dfbf8e"
@@ -54,17 +54,19 @@ info_fg = "#dfbf8e"
 [[block]]
 block = "custom"
 command = "sh ~/.config/i3status-rust/wifi.sh"
-interval = 10
+on_click = "alacritty -t=nmtui -e nmtui"
+interval = 8
 hide_when_empty = true	
 [block.theme_overrides]
 idle_bg = "#282828"
 idle_fg = "#dfbf8e"
 
-
 [[block]]
-block = "custom"
-command = "cat ~/.config/i3status-rust/volume_current"
-watch_files = ["~/.config/i3status-rust/volume_current"]
+block = "sound"
+driver = "pulseaudio" 
+format = "{volume}"
+headphones_indicator = true
+on_click = "alacritty -t=pulsemixer -e pulsemixer"
 [block.theme_overrides]
 idle_bg = "#689d6a"
 idle_fg = "#dfbf8e"

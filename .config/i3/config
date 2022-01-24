@@ -153,9 +153,6 @@ exec --no-startup-id /usr/bin/dunst
 # music player daemon (mpd)
 exec --no-startup-id mpd
 
-# volume icon
-exec_always sh ~/.config/i3status-rust/volume.sh 
-
 ####-LOCKSCREEN & POWEROFF-####
 
 bindsym $mod+shift+x exec betterlockscreen -l blur -u ~/.wall.png --span
@@ -170,7 +167,7 @@ bindsym $mod+Return exec --no-startup-id $term;focus
 bindsym XF86Terminal exec --no-startup-id $term;focus
 
 #pulsemixer
-bindsym $mod+F2 exec --no-startup-id $term -e pulsemixer && sh ~/.config/i3status-rust/volume.sh
+bindsym $mod+F2 exec --no-startup-id $term -e pulsemixer
 
 #file manager
 bindsym $mod+g exec --no-startup-id $term -e ranger
@@ -231,13 +228,13 @@ for_window [title="bc"]  floating enable
 
 ####-AUDIO CONTROL-####
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pulsemixer --change-volume +5 && sh ~/.config/i3status-rust/volume.sh"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pulsemixer --change-volume -5 && sh ~/.config/i3status-rust/volume.sh"
-bindsym XF86AudioMute exec --no-startup-id "pulsemixer --toggle-mute && sh ~/.config/i3status-rust/volume.sh"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pulsemixer --change-volume +5"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pulsemixer --change-volume -5"
+bindsym XF86AudioMute exec --no-startup-id "pulsemixer --toggle-mute"
 
-bindsym Shift+F2 exec --no-startup-id "pulsemixer --change-volume +5 && sh ~/.config/i3status-rust/volume.sh"
-bindsym Shift+F1 exec --no-startup-id "pulsemixer --change-volume -5 && sh ~/.config/i3status-rust/volume.sh"
-bindsym Shift+F3 exec --no-startup-id "pulsemixer --toggle-mute && sh ~/.config/i3status-rust/volume.sh"
+bindsym Shift+F2 exec --no-startup-id "pulsemixer --change-volume +5"
+bindsym Shift+F1 exec --no-startup-id "pulsemixer --change-volume -5"
+bindsym Shift+F3 exec --no-startup-id "pulsemixer --toggle-mute"
 
 
 ####-NCMPCPP CONTROL-####

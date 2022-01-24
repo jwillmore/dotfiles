@@ -26,7 +26,7 @@ List of programs that I use:
 - pipe-viewer
 - pass & passmenu
 -----------------------
-![1634907024](https://user-images.githubusercontent.com/92748037/138460756-98544c38-2a09-4169-95bd-20acc0591e68.png)
-![1634907012](https://user-images.githubusercontent.com/92748037/138460753-191a0cb7-d193-4062-87d6-1bb2bdd9a428.png)
-![1634907104](https://user-images.githubusercontent.com/92748037/138460757-de36a0e8-e067-4923-8c0d-9479bd51b86a.png)
-![1634907380](https://user-images.githubusercontent.com/92748037/138460762-1869e840-82bb-4963-87f0-96406ad4311e.png)
+![1643050156](https://user-images.githubusercontent.com/92748037/150847121-4256e56f-1b65-4283-a32b-ff90877c29e6.png)
+![1643050173](https://user-images.githubusercontent.com/92748037/150847202-3efbcacb-47c4-4343-b1e7-05f88f45a670.png)
+![1643050226](https://user-images.githubusercontent.com/92748037/150847223-b26f1a51-fbce-4164-824b-838e5b5782cb.png)
+![1643050330](https://user-images.githubusercontent.com/92748037/150847229-48e43525-6f53-46ac-bac8-e9be4ae1cffe.png)

@@ -166,6 +166,9 @@ bindsym XF86PowerOff exec --no-startup-id .local/bin/pwrm
 bindsym $mod+Return exec --no-startup-id $term;focus
 bindsym XF86Terminal exec --no-startup-id $term;focus
 
+#floating terminal
+bindsym $mod+Shift+Return exec --no-startup-id $term -t=floaterm
+
 #pulsemixer
 bindsym $mod+F2 exec --no-startup-id $term -e pulsemixer
 

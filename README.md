@@ -5,7 +5,6 @@ This dotfiles are designed to be installed with [***JDODS***](https://github.com
 
 ### Components
 - i3-gaps
-- i3blocks
 - i3status-rust
 - betterlockscreen
 - alacritty

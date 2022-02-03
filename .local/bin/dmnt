@@ -11,7 +11,7 @@ mnt=/run/media
 
 mountd(){
   if [[ -z "$drives" ]]; then
-  dialog --colors --title "Empty" --msgbox "\Zb There are no drives that can be mounted." 0 0
+  dialog --colors --title "Empty" --msgbox "\Zb There are no drives to mount." 0 0
   fi
 
   option=$(echo "$drives" | sort -V )
@@ -30,7 +30,7 @@ fs_uuid=$(lsblk -no UUID "$drive")
 
 umountd(){
   if [[ -z "$udrives" ]]; then
-  dialog --colors --title "Empty" --msgbox "\Zb There are no drives that can be unmounted." 0 0
+  dialog --colors --title "Empty" --msgbox "\Zb There are no drives to unmount." 0 0
   fi
 
   option=$(echo "$udrives" | sort -V )

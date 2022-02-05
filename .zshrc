@@ -115,8 +115,11 @@ fi
 IFS=$SAVEIFS
 
 ####-PROMPT-####
-PS1="%B%{$fg[cyan]%}%n%  %{$fg[white]%}%~ %{$fg[cyan]%}
- >%b "
+#PS1="%B%{$fg[cyan]%}%n%  %{$fg[white]%}%~ %{$fg[cyan]%}
+# >%b "
+
+####-START STARSHIP SHELL-####
+eval "$(starship init zsh)"
 
 ####-PFETCH-####
 export PF_COL1=6

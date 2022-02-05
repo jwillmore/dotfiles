@@ -23,10 +23,9 @@ critical_bg = "#fb4934"
 block = "temperature"
 collapsed = false
 interval = 10
-driver = "sysfs"
+driver = "sensors"
 format = "{average}"
-chip = "0"
-clickable = false
+chip = "*-isa-*"
 [block.theme_overrides]
 info_bg = "#689d6a"
 good_bg = "#689d6a"

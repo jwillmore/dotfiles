@@ -11,11 +11,11 @@ mnt=/run/media
 
 mountd(){
   if [[ -z "$drives" ]]; then
-  dialog --colors --title "Empty" --msgbox "\Zb There are no drives to mount." 0 0
+  whiptail --title "Empty" --msgbox "There are no drives to mount." 0 0
   fi
 
   option=$(echo "$drives" | sort -V )
-  drive=$(dialog --title "Choose a drive to mount." --menu "" 20 40 20 $option 3>&1 1>&2 2>&3) || exit
+  drive=$(whiptail --title "Choose a drive to mount." --menu "" 0 0 0 $option 3>&1 1>&2 2>&3) || exit
 fs_uuid=$(lsblk -no UUID "$drive")
 
   sudo mkdir -p $mnt/"$fs_uuid"
@@ -30,11 +30,11 @@ fs_uuid=$(lsblk -no UUID "$drive")
 
 umountd(){
   if [[ -z "$udrives" ]]; then
-  dialog --colors --title "Empty" --msgbox "\Zb There are no drives to unmount." 0 0
+  whiptail --title "Empty" --msgbox "There are no drives to unmount." 0 0
   fi
 
   option=$(echo "$udrives" | sort -V )
-  drive=$(dialog --title "Choose a drive to unmount." --menu "" 20 60 20 $option 3>&1 1>&2 2>&3) || exit
+  drive=$(whiptail --title "Choose a drive to unmount." --menu "" 0 0 0 $option 3>&1 1>&2 2>&3) || exit
   sudo umount "$drive"
   sudo rmdir "$drive"
 
@@ -45,7 +45,7 @@ else
 fi
 }
 
-  action=$(dialog --title "dmount | by Jwillmore" --menu "" 8 40 20 "Mount" "" "Unmount" "" 3>&1 1>&2 2>&3)
+  action=$(whiptail --title "dmount | by Jwillmore" --menu '' 0 0 0 "Mount" "" "Unmount" "" 3>&1 1>&2 2>&3)
   if [ "$action" = "Mount" ]; then
     mountd
   elif [ "$action" = "Unmount" ]; then 

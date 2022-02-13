@@ -226,21 +226,25 @@ for_window [window_role="setup"] floating enable
 for_window [title="pulsemixer"]  floating enable
 for_window [title="dmnt"]  floating enable
 for_window [title="nmtui"]  floating enable
-for_window [title="bc"]  floating enable
+for_window [title="bc"]  floating enable, resize set height 400 px, resize set width 605 px, move position 15 15 
+for_window [title="floaterm"]  floating enable
 
 
 ####-AUDIO CONTROL-####
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pulsemixer --change-volume +5"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pulsemixer --change-volume -5"
-bindsym XF86AudioMute exec --no-startup-id "pulsemixer --toggle-mute"
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-bindsym Shift+F2 exec --no-startup-id "pulsemixer --change-volume +5"
-bindsym Shift+F1 exec --no-startup-id "pulsemixer --change-volume -5"
-bindsym Shift+F3 exec --no-startup-id "pulsemixer --toggle-mute"
+bindsym Shift+F2 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym Shift+F1 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym Shift+F3 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym Shift+F4 exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 
 ####-NCMPCPP CONTROL-####
+
 bindsym XF86AudioPlay exec --no-startup-id "mpc toggle"
 bindsym XF86AudioPrev exec --no-startup-id "mpc prev"
 bindsym XF86AudioNext exec --no-startup-id "mpc next"

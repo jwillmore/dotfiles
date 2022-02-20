@@ -226,7 +226,7 @@ for_window [window_role="setup"] floating enable
 for_window [title="pulsemixer"]  floating enable
 for_window [title="dmnt"]  floating enable
 for_window [title="nmtui"]  floating enable
-for_window [title="bc"]  floating enable, resize set height 400 px, resize set width 605 px, move position 15 15 
+for_window [title="bc"]  floating enable, sticky enable, resize set 30 ppt 60 ppt, move position 15 15 
 for_window [title="floaterm"]  floating enable
 
 

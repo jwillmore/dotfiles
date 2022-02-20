@@ -1,3 +1,24 @@
+# general settings
+auto-reload yes
+max-items 50
+
+# externel browser
+browser "qutebrowser %u"
+macro m set browser "mpv %u"; open-in-browser ; set browser "qutebrowser %u"
+
+# unbind keys
+unbind-key ENTER
+unbind-key j
+unbind-key k
+unbind-key J
+unbind-key K
+
+# bind keys - vim style
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+
 # colors
 color background          black      default
 color listnormal          color8     default
@@ -14,5 +35,3 @@ highlight article "https?://[^ ]+" blue default underline
 highlight article "\\[[0-9]+\\]" yellow default bold
 highlight article "\\[image\\ [0-9]+\\]" yellow default bold
 highlight feedlist "^─.*$" yellow color235 bold
-
-browser qutebrowser

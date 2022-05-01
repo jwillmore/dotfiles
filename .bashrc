@@ -14,6 +14,7 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export READER='zathura'
 export TERMINAL='termite'
+export QT_QPA_PLATFORM='wayland'
 
 PS1='[\u@\h \W]\$ '
 

@@ -14,17 +14,17 @@ visualizer_sync_interval = "12"
 visualizer_type = "spectrum" (spectrum/wave)
 visualizer_in_stereo = "yes"
 visualizer_look = "+|"
-visualizer_color = "cyan"
+visualizer_color = "yellow"
 
 [header]
 header_visibility = "yes"
-header_window_color = "cyan"
+header_window_color = "white"
 volume_color = "yellow"
 state_line_color = "black"
 
 [playlist]
 playlist_display_mode = "classic"
-song_list_format = "$7%t $R$4%a"
+song_list_format = "$4%t $R$8%a"
 now_playing_prefix = "$b"
 now_playing_suffix = "$/b"
 browser_playlist_prefix = "$1»$1 "
@@ -36,8 +36,8 @@ playlist_directory "~/Music"
 progressbar_look = "━━━"
 progressbar_color = "black"
 statusbar_visibility = "yes"
-progressbar_elapsed_color = "cyan"
-statusbar_color = "7"
+progressbar_elapsed_color = "yellow"
+  statusbar_color = "4"
 song_status_format = "{%t - %a}"
 
 [library]

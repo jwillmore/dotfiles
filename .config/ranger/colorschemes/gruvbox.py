@@ -30,7 +30,7 @@ class Default(ColorScheme):
 				attr |= normal
 				
 				if context.image:
-					fg = 108
+					fg = 214 
 					
 				else:
 					fg = 108
@@ -41,17 +41,17 @@ class Default(ColorScheme):
 				
 			if context.directory:
 				attr |= normal
-				fg = 65
+				fg = 203
 				
 			elif context.executable and not any((context.media, context.container, context.fifo, context.socket)):
 				attr |= normal
-				fg = 108
+				fg = 186
 				
 			if context.socket:
-				fg = 108
+				fg = 186
 				
 			if context.fifo or context.device:
-				fg = 172
+				fg = 186
 				
 				if context.device:
 					attr |= bold
@@ -90,28 +90,28 @@ class Default(ColorScheme):
 					
 		elif context.in_titlebar:
 			attr |= bold
-			fg = 108
+			fg = 186
 			
 			if context.hostname:
-				fg = 172
+				fg = 214
 				
 			elif context.directory:
-				fg = 65
+				fg = 214
 				
 			elif context.tab:
 				if context.good:
-					bg = 108
+					bg = 186
 					
 			elif context.link:
-				fg = 66
+				fg = 186
 
 		elif context.in_statusbar:
 			attr |= bold
-			fg = 108
+			fg = 186
 			
 			if context.permissions:
 				if context.good:
-					fg = 166
+					fg = 203
 					
 				elif context.bad:
 					fg = 132
@@ -130,7 +130,7 @@ class Default(ColorScheme):
 
 		if context.in_taskview:
 			if context.title:
-				fg = 66
+				fg = 186
 
 			if context.selected:
 				attr |= reverse

@@ -4,6 +4,7 @@
 ###############-by Jwillmore-###############
 ########-Released under MIT License-########
 
+
 drives="$(lsblk -rpo "name,type,size,mountpoint" | grep 'part\|rom' | awk '$4==""{printf " %s (%s) \n",$1,$3}')"
 udrives=$(lsblk -nrpo "name,type,size,mountpoint,label" | awk -F':' '{gsub(/ /,":")}$4!~/\/boot|\/efi|\/home$|SWAP/&&length($4)>1{printf "%s (%s) \n",$4,$3,$5}')
 mnt=/run/media
@@ -14,14 +15,14 @@ mountd(){
   fi
 
   option=$(echo "$drives" | sort -V )
-  drive=$(whiptail --title "Choose a drive to mount." --menu "" 0 0 0 $option 3>&1 1>&2 2>&3) || exit 
+  drive=$(whiptail --title "Choose a drive to mount." --menu "" 0 0 0 $option 3>&1 1>&2 2>&3) || exit
 fs_uuid=$(lsblk -no UUID "$drive")
 
     pass=$(whiptail --title "Authentication required" --passwordbox "Enter your password" 0 0 3>&1 1>&2 2>&3)
 
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
-        sudo -S <<< $pass script.sh
+        sudo -S <<< $pass sus
 	sudo mkdir -p $mnt/"$fs_uuid"
 	sudo mount "$drive" $mnt/"$fs_uuid"
 	if mount | grep "$drive" > /dev/null; then
@@ -47,7 +48,7 @@ umountd(){
 
     exitstatus=$?
     if [ $exitstatus = 0 ]; then
-        sudo -S <<< $pass script.sh
+        sudo -S <<< $pass sus
 	sudo umount "$drive"
 	sudo rmdir "$drive"
 

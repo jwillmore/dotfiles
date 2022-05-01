@@ -9,8 +9,11 @@ export EDITOR='nvim'
 export VISUAL='nvim'
 export READER='zathura'
 export TERMINAL='alacritty'
-export QT_QPA_PLATFORMTHEME=qt5ct
-
+export SUDO_ASKPASS="$HOME/.local/bin/askpass"
+export QT_QPA_PLATFORM=xcb
+export TUIR_BROWSER='mpv'
+export QT_QPA_PLATFORMTHEME='qt5ct'
+export NNN_COLORS="2136"
 # History in cache directory:
 HISTSIZE=10000000
 SAVEHIST=10000000
@@ -28,6 +31,7 @@ compinit
 
 # VI Mode
 bindkey -v
+#
 
 if [ -d "$HOME/.bin" ] ;
   then PATH="$HOME/.bin:$PATH"
@@ -40,6 +44,9 @@ fi
 #list
 alias ls='exa -a --color=always --group-directories-first'
 alias la='exa -al --color=always --group-directories-first'
+
+#cat
+alias cat='bat'
 
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'
@@ -114,28 +121,24 @@ fi
 
 IFS=$SAVEIFS
 
-####-PROMPT-####
-#PS1="%B%{$fg[cyan]%}%n%  %{$fg[white]%}%~ %{$fg[cyan]%}
-# >%b "
-
 ####-START STARSHIP SHELL-####
 eval "$(starship init zsh)"
 
 ####-PFETCH-####
-export PF_COL1=6
-export PF_COL3=6
+export PF_COL1=3
+export PF_COL3=3
 
 pfetch
 
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-source ~/.zsh/zsh-syntax/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=#689D6A,bold
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=#689D6A,bold
-ZSH_HIGHLIGHT_STYLES[arg0]=fg=#689D6A,bold
-ZSH_HIGHLIGHT_STYLES[command]=fg=#689D6A,bold
+ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=#d79921,bold
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=#d79921,bold
+ZSH_HIGHLIGHT_STYLES[arg0]=fg=#d79921,bold
+ZSH_HIGHLIGHT_STYLES[command]=fg=#d79921,bold
 ZSH_HIGHLIGHT_STYLES[root]='bg=red'
-ZSH_HIGHLIGHT_STYLES[path]='fg=#689D6A'
+ZSH_HIGHLIGHT_STYLES[path]='fg=#d79921'

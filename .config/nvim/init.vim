@@ -19,6 +19,8 @@ Plug 'morhetz/gruvbox'
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'preservim/nerdcommenter'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
 " Syntax
 Plug 'ap/vim-css-color'
@@ -30,6 +32,9 @@ call plug#end()
 colorscheme gruvbox
 let g:gruvbox_contrast_dark = "hard"
 let NERDTreeQuitOnOpen=1
+let g:livepreview_previewer = 'zathura'
+let g:livepreview_engine = 'pdflatex'
+filetype plugin on
 
 let mapleader=" "
 

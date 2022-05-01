@@ -1,0 +1,174 @@
+{
+    "layer": "bottom", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "mpd"],
+    "modules-center": ["custom/weather2", "clock", "custom/pacman", "battery", "battery#bat2"],
+    "modules-right": ["pulseaudio", "network", "cpu", "temperature", "backlight","memory", "tray"],
+    // Modules configuration
+     "sway/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": true,
+         "format": "{icon}",
+         "format-icons": {
+             "1": "I",
+             "2": "II",
+             "3": "III",
+             "4": "IV",
+             "5": "V",
+             "6": "VI",
+             "7": "VII",
+             "8": "VIII",
+             "9": "IX",
+             "10": "X",
+             "urgent": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#d79921\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": " {}%"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", ""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {icon} {capacity}%",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": " {essid} ({signalStrength}%)",
+	"interval": 20,
+        "format-ethernet": " {ipaddr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": " Disconnected",
+	"on-click": "alacritty -t nmtui -e nmtui"
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " X {icon} {format_source}",
+        "format-muted": " X {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "alacritty -t pulsemixer -e pulsemixer"
+    },
+    "custom/pacman": {
+    "format": " {}",
+    "interval": 3600,                     // every hour
+    "exec": "checkupdates | wc -l",       // # of updates
+    "exec-if": "exit 0",                  // always run; consider advanced run conditions
+    "on-click": "alacritty -e sudo pacman -Syu; pkill -SIGRTMIN+8 waybar", // update system
+    "signal": 8
+    },
+    "custom/weather": {
+    "exec": "python ~/.config/waybar/scripts/weather.py",
+    "restart-interval": 300,
+    "return-type": "json",
+    "on-click": "qutebrowser https://weather.com/en-IN/weather/today/l/a20921466ed768e3e56f073f78835240de83a408cde93dca6652a6e385f7c889"
+    },
+    "custom/weather2": {
+    "format": "{}",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "python ~/.config/waybar/scripts/weather2.py",
+    "return-type": "json"
+    }
+}

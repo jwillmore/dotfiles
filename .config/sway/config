@@ -1,0 +1,358 @@
+#########-SWAY CONFIGURATION by jwillmore-##########
+
+set $mod Mod4
+set $term alacritty
+
+####-MOVEMENT KEYS-####
+
+set $up k
+set $down j
+set $left h
+set $right l
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1; workspace 1
+bindsym $mod+Shift+2 move container to workspace 2; workspace 2
+bindsym $mod+Shift+3 move container to workspace 3; workspace 3
+bindsym $mod+Shift+4 move container to workspace 4; workspace 4
+bindsym $mod+Shift+5 move container to workspace 5; workspace 5
+bindsym $mod+Shift+6 move container to workspace 6; workspace 6
+bindsym $mod+Shift+7 move container to workspace 7; workspace 7
+bindsym $mod+Shift+8 move container to workspace 8; workspace 8
+bindsym $mod+Shift+9 move container to workspace 9; workspace 9
+bindsym $mod+Shift+0 move container to workspace 10; workspace 10
+
+####-LAUNCHER MENU-####
+
+# start rofi 
+#bindsym $mod+d exec rofi -show drun -fullscreen -font "Noto Sans 13"
+
+#start dmenu
+#bindsym $mod+d exec dmenu-wl_run -b -i -nf '#d79921' -nb '#282828' -sb '#d79921' -sf '#282828' -h '25' -fn 'Noto Sans 13' 
+#bindsym XF86Launch1 exec dmenu-wl_run -b -i -nf '#d79921' -nb '#282828' -sb '#d79921' -sf '#282828' -h '25' -fn 'Source Code Pro 13' 
+#bindsym XF86Search exec dmenu-wl_run -b -i -nf '#d79921' -nb '#282828' -sb '#d79921' -sf '#282828' -h '25' -fn 'Noto Sans 13' 
+
+bindsym $mod+d exec alacritty -t menu-launch-w -e sway-launcher-desktop
+bindsym XF86Search exec alacritty -t menu-launch-w -e sway-launcher-desktop
+bindsym XF86Launch1 exec alacritty -t menu-launch-w -e sway-launcher-desktop
+
+
+####-CONFIGURATION RELOAD-####
+
+# reload the configuration file
+bindsym $mod+Shift+r reload
+
+####-KILL WINDOWS-####
+
+bindsym $mod+Shift+q kill
+bindsym $mod+q kill
+
+####-MOVEMENT-####
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# toggle tiling / floating
+bindsym $mod+Shift+t floating toggle
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+
+####-WORKSPACES-####
+
+# next/previous workspace
+
+exec autotiling
+
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
+bindsym $mod+Tab workspace back_and_forth
+
+#navigate workspaces next / previous
+bindsym Mod1+Ctrl+Right workspace next
+bindsym Mod1+Ctrl+Left workspace prev
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+####-TILING-####
+
+default_border pixel 2px
+
+# orientation for new workspaces
+default_orientation horizontal
+
+# split in horizontal orientation
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+Shift+z layout tabbed
+bindsym $mod+e layout toggle split
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+####-RESIZING-####
+
+# Resizing by 1
+bindsym $mod+Ctrl+$right resize shrink width 1 px or 1 ppt
+bindsym $mod+Ctrl+$up resize grow height 1 px or 1 ppt
+bindsym $mod+Ctrl+$down resize shrink height 1 px or 1 ppt
+bindsym $mod+Ctrl+$left resize grow width 1 px or 1 ppt
+
+
+####-FONT-####
+font pango: Noto Sans 13, FontAwesome 15
+
+####-RUN AT STARTUP-####
+
+# set wallpaper
+output * bg /home/$USER/.wall.png fill
+
+# notifications
+exec /usr/bin/dunst
+
+# authentication agent
+exec lxpolkit
+
+# music player daemon (mpd)
+exec mpd
+
+# gtk something
+exec_always {
+  gsettings set org.gnome.desktop.interface gtk-theme "gruvbox-dark-gtk"
+}
+
+####-LOCKSCREEN & POWEROFF-####
+
+exec swayidle -w timeout 300 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on" && swaylock --clock -f -i $HOME/.lck.png'
+exec swayidle before-sleep 'swaylock --clock -f -i $HOME/.lck.png'
+
+bindsym $mod+shift+x exec swaylock --clock -f -i .lck.png
+
+bindsym $mod+shift+p exec wlogout
+
+####-SHORTCUTS FOR PROGRAMS-####
+
+# terminal
+bindsym $mod+Return exec $term
+bindsym XF86Terminal exec $term;focus
+
+#floating terminal
+bindsym $mod+Shift+Return exec $term -t=floaterm
+
+#pulsemixer
+bindsym $mod+F2 exec $term -t=pulsemixer -e pulsemixer 
+
+#file manager
+bindsym $mod+g exec $term -e ranger
+bindsym XF86Explorer exec $term -e ranger
+
+#reddit client
+bindsym $mod+Shift+F1 exec $term -e tuir --theme theme --enable-media
+
+#web browser
+bindsym $mod+w exec qutebrowser
+
+#mail
+bindsym $mod+c exec $term -e  aerc
+bindsym XF86Mail exec $term -e aerc
+
+#music player
+bindsym $mod+m exec $term -e ncmpcpp
+bindsym XF86Music exec $term -e ncmpp
+
+#htop
+bindsym $mod+Shift+b exec $term -e htop
+
+#zathura
+bindsym $mod+z exec zathura
+
+#screenshots
+bindsym Print exec grim $(xdg-user-dir PICTURES)/$(date +'%s.png') && notify-send ' Screenshot saved to Pictures'
+bindsym shift+Print exec $HOME/.local/bin/grimshot save area $(xdg-user-dir PICTURES)/$(date +'%s.png') && notify-send ' Screenshot saved to Pictures'
+
+#Network Menu
+bindsym $mod+Shift+w exec $term -t=networktui -e nmtui
+
+#calculator
+bindsym $mod+F4 exec $term -t=bccalc -e bc --quiet
+bindsym XF86Calculator exec $term -t=bccalc -e bc --quiet
+
+#pipe-viewer
+bindsym $mod+F1 exec $term -e pipe-viewer
+
+#pass-menu
+bindsym $mod+p exec passmenu -i -p 'Passwords' -b -nb '#282828' -sf '#282828' -sb '#d79921' -nf '#d5c4a1' -h 25 
+
+#RSS feed reader
+bindsym $mod+n exec $term -e newsboat
+bindsym XF86News exec $term -e newsboat
+
+#Drive mounter
+bindsym $mod+F3 exec $term -t=dmnt -e sh ~/.local/bin/dmnt
+
+####-TILING OR FLOATING CONFIGURATION-####
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="^Preferences$"] floating enable
+for_window [window_role="setup"] floating enable
+for_window [title="pulsemixer"]  floating enable, resize set 40 ppt 65 ppt, move position 30 ppt 5 ppt
+for_window [title="floaterm"]  floating enable
+for_window [title="dmnt"]  floating enable, resize set 40 ppt 62 ppt, move position 30 ppt 5 ppt
+for_window [title="menu-launch-w"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
+for_window [title="networktui"] floating enable, resize set 40 ppt 60 ppt
+for_window [title="bccalc"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 5, move position 15 15
+for_window [instance="origin.exe"] floating enable
+
+####-AUDIO CONTROL-####
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+bindsym Shift+F2 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym Shift+F1 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym Shift+F3 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym Shift+F4 exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+####-NCMPCPP CONTROL-####
+bindsym XF86AudioPlay exec "mpc toggle"
+bindsym XF86AudioPrev exec "mpc prev"
+bindsym XF86AudioNext exec "mpc next"
+
+bindsym Shift+F6 exec "mpc toggle"
+bindsym Shift+F5 exec "mpc prev"
+bindsym Shift+F7 exec "mpc next"
+
+
+####-BRIGHTNESSCTL-####
+
+bindsym XF86MonBrightnessUp exec brightnessctl set +10% && dunstify -r 1 " Brightness up" # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%- && dunstify -r 1 " Brightness down" # decrease screen brightness
+
+bindsym Shift+F10 exec brightnessctl set +10% && notify-send " Brightness up" # increase screen brightness
+bindsym Shift+F9 exec brightnessctl set 10%- && notify-send " Brightness down" # decrease screen brightness
+
+####-POPUPS-####
+
+#Popups during fullscreen mode
+popup_during_fullscreen smart
+
+####-GAPS-####
+
+gaps inner 10
+gaps outer 5
+#smart_gaps on
+#smart_borders on
+
+####-GAPS CHANGE-####
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+####-BAR CONFIG-####
+
+## WAYBAR 
+bar {
+    status_command waybar
+    swaybar_command waybar
+}   
+
+## WM THEME
+
+    # Window color settings
+
+	# Gruvbox colors
+	client.focused		#d79921 #d79921 #191919 #d79921 #d79921
+	client.unfocused	#282828 #282828 #282828 #282828 #282828
+	client.focused_inactive #2c3c3d #458588 #191919 #2c3c3d #2c3c3d
+	client.placeholder	#191919 #282828 #458588 #191919 #282828
+	client.urgent		#cc241d #cc241d #191919 #cc241d #cc241d
+
+	client.background	#282828
+
+####-KEYBOARD LAYOUT-####
+
+#input * {
+  #xkb_layout layout
+#}
+
+###############-THE END-###############

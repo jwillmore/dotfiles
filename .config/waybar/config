@@ -158,12 +158,6 @@
     "on-click": "alacritty -e sudo pacman -Syu; pkill -SIGRTMIN+8 waybar", // update system
     "signal": 8
     },
-    "custom/weather": {
-    "exec": "python ~/.config/waybar/scripts/weather.py",
-    "restart-interval": 300,
-    "return-type": "json",
-    "on-click": "qutebrowser https://weather.com/en-IN/weather/today/l/a20921466ed768e3e56f073f78835240de83a408cde93dca6652a6e385f7c889"
-    },
     "custom/weather2": {
     "format": "{}",
     "tooltip": true,

@@ -58,6 +58,16 @@ alias p='sudo pacman'
 alias nv="nvim"
 alias SS='sudo systemctl'
 
+#swayhide aliases
+alias zathura='swayhide zathura'
+alias imv='swayhide imv'
+alias sxiv='swayhide sxiv'
+alias qpwgraph='swayhide qpwgraph'
+alias firefox='swayhide firefox'
+alias audacity='swayhide audacity'
+alias inkscape='swayhide inkscape'
+alias mpv='swayhide mpv'
+
 #grub update
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 

@@ -36,18 +36,10 @@ bindsym $mod+Shift+0 move container to workspace 10; workspace 10
 
 ####-LAUNCHER MENU-####
 
-# start rofi 
-#bindsym $mod+d exec rofi -show drun -fullscreen -font "Noto Sans 13"
-
-#start dmenu
-#bindsym $mod+d exec dmenu-wl_run -b -i -nf '#d79921' -nb '#282828' -sb '#d79921' -sf '#282828' -h '25' -fn 'Noto Sans 13' 
-#bindsym XF86Launch1 exec dmenu-wl_run -b -i -nf '#d79921' -nb '#282828' -sb '#d79921' -sf '#282828' -h '25' -fn 'Source Code Pro 13' 
-#bindsym XF86Search exec dmenu-wl_run -b -i -nf '#d79921' -nb '#282828' -sb '#d79921' -sf '#282828' -h '25' -fn 'Noto Sans 13' 
-
-bindsym $mod+d exec alacritty -t menu-launch-w -e sway-launcher-desktop
-bindsym XF86Search exec alacritty -t menu-launch-w -e sway-launcher-desktop
-bindsym XF86Launch1 exec alacritty -t menu-launch-w -e sway-launcher-desktop
-
+#launch wofi
+bindsym $mod+d exec wofi -i --show run 
+bindsym XF86Launch1 exec wofi -i --show run 
+bindsym XF86Search exec wofi -i --show run 
 
 ####-CONFIGURATION RELOAD-####
 
@@ -172,7 +164,7 @@ exec swayidle before-sleep 'swaylock --clock -f -i $HOME/.lck.png'
 
 bindsym $mod+shift+x exec swaylock --clock -f -i .lck.png
 
-bindsym $mod+shift+p exec wlogout
+bindsym $mod+shift+p exec .local/bin/pwrm
 
 ####-SHORTCUTS FOR PROGRAMS-####
 
@@ -225,14 +217,17 @@ bindsym XF86Calculator exec $term -t=bccalc -e bc --quiet
 bindsym $mod+F1 exec $term -e pipe-viewer
 
 #pass-menu
-bindsym $mod+p exec passmenu -i -p 'Passwords' -b -nb '#282828' -sf '#282828' -sb '#d79921' -nf '#d5c4a1' -h 25 
+bindsym $mod+p exec passmenu -l 5 -i --tb '#d79921' --tf '#282828' --nb '#282828' --hb '#d79921' --hf '#282828' --fb '#282828' -H 30 -p 'Passwords' --fn 'Noto Sans'  
 
 #RSS feed reader
 bindsym $mod+n exec $term -e newsboat
 bindsym XF86News exec $term -e newsboat
 
 #Drive mounter
-bindsym $mod+F3 exec $term -t=dmnt -e sh ~/.local/bin/dmnt
+bindsym $mod+F3 exec $term -t=dmount -e sh ~/.local/bin/dmount
+
+#Share files
+bindsym $mod+Shift+s exec --no-startup-id .local/bin/share.sh
 
 ####-TILING OR FLOATING CONFIGURATION-####
 
@@ -241,7 +236,7 @@ for_window [window_role="^Preferences$"] floating enable
 for_window [window_role="setup"] floating enable
 for_window [title="pulsemixer"]  floating enable, resize set 40 ppt 65 ppt, move position 30 ppt 5 ppt
 for_window [title="floaterm"]  floating enable
-for_window [title="dmnt"]  floating enable, resize set 40 ppt 62 ppt, move position 30 ppt 5 ppt
+for_window [title="dmount"]  floating enable, resize set 40 ppt 62 ppt, move position 30 ppt 5 ppt
 for_window [title="menu-launch-w"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 10
 for_window [title="networktui"] floating enable, resize set 40 ppt 60 ppt
 for_window [title="bccalc"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 5, move position 15 15

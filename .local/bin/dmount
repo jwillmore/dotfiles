@@ -1,0 +1,62 @@
+#!/bin/bash
+
+drives="$(lsblk -rpo "name,type,size,mountpoint" | grep 'part\|rom' | awk '$4==""{printf " %s (%s) \n",$1,$3}')"
+udrives=$(lsblk -nrpo "name,type,size,mountpoint,label" | awk -F':' '{gsub(/ /,":")}$4!~/\/boot|\/efi|\/home$|SWAP/&&length($4)>1{printf "%s (%s) \n",$4,$3,$5}')
+mnt=/run/media
+menu="bemenu --no-exec -i --tb #d79921 --tf #282828 --nb #282828 --hb #d79921 --hf #282828 --fb #282828 -H 30 --fn 'Noto Sans'"
+
+
+
+  mountd(){
+    if [[ -z "$drives" ]]; then
+      notify-send "  There are no drives to mount"
+      exit 0
+    fi
+
+    drive=$(echo "$drives" | $menu -p 'Select a drive to mount' | awk '{print $1}')
+
+    if [[ -z $drive ]]; then
+      exit 0
+    fi
+
+    fs_uuid=$(lsblk -no UUID "$drive")
+
+    sudo -A mkdir -p $mnt/"$fs_uuid"
+    sudo -A mount "$drive" $mnt/"$fs_uuid"
+
+    if mount | grep "$drive" > /dev/null; then
+      notify-send "  $drive mounted on $mnt/$fs_uuid"
+    else
+      notify-send "  $drive failed to be mounted."
+    fi
+  }
+
+  umountd(){
+    if [[ -z "$udrives" ]]; then
+      notify-send "  There are no drives to unmount"
+      exit 0
+    fi
+
+    drive=$(echo "$udrives" | $menu -p 'Select a drive to unmount' | awk '{print $1}')
+
+    if [[ -z $drive ]]; then
+      exit 0
+    fi
+
+    sudo -A umount $drive 
+    sudo -A rmdir "$drive"
+
+    if [ ! -d "$drive" ]; then
+      notify-send "  $drive unmounted"
+    else
+      notify-send "  $drive could not be unmounted."
+    fi
+  }
+
+action=$(echo -e "Mount\nUnmount" | $menu -p 'Dmount')
+
+if [ "$action" = "Mount" ]; then
+  mountd
+elif [ "$action" = "Unmount" ]; then 
+  umountd
+fi

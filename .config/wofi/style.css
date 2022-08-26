@@ -1,0 +1,42 @@
+* {
+    font-family: 'Noto Sans';
+    font-size: 14px;
+    font-weight: 350;
+}
+
+#window {
+    margin: 0px;
+    border: 2px solid;
+    border-color: #d79921;
+    background-color: #2d2d2d;
+    background: rgba(40, 40, 40, 0.8); 
+    color: #dfbf8e;
+}
+
+#input {
+    margin: 15px;
+    background: rgba(40, 40, 40, 0.5); 
+    color: #dfbf8e;
+    border: 0px solid #2d2d2d;
+}
+
+#entry {
+    margin: 0px 15px;
+}
+
+#entry:selected {
+    background-color: #d79921;
+    outline: none;
+}
+
+#text:selected {
+    background-color: #d79921;
+}
+
+#entry > box {
+    margin-left: 16px;
+}
+
+#entry image {
+    padding-right: 10px;
+}

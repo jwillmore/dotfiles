@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# a simple dmenu session script 
+#
+###
+
+choice=$(echo -e "logout\nshutdown\nreboot\nsuspend" | bemenu --list 4 --no-exec -i --tb '#d79921' --tf '#282828' --nb '#282828' --hb '#d79921' --hf '#282828' --fb '#282828' -H 30 -p 'Power' --fn 'Noto Sans')
+
+case "$choice" in
+  logout) swaymsg exit & ;;
+  shutdown) systemctl poweroff & ;;
+  reboot) systemctl reboot ;;
+  suspend) systemctl suspend & ;;
+esac
